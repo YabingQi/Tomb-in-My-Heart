@@ -1,0 +1,88 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+/* sizes */
+.sm { --candle-w: 8px; --candle-h: 28px; --flame-w: 10px; --flame-h: 16px; }
+.md { --candle-w: 12px; --candle-h: 40px; --flame-w: 14px; --flame-h: 22px; }
+.lg { --candle-w: 18px; --candle-h: 60px; --flame-w: 22px; --flame-h: 34px; }
+
+.body {
+  width: var(--candle-w);
+  height: var(--candle-h);
+  background: linear-gradient(
+    to right,
+    #b8a888 0%,
+    var(--color-candle, #e8dcc8) 40%,
+    #d4c8a8 100%
+  );
+  border-radius: 2px 2px 1px 1px;
+  position: relative;
+  box-shadow: inset -2px 0 4px rgba(0,0,0,0.3);
+}
+
+.wick {
+  width: 1px;
+  height: 5px;
+  background: #333;
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.flame {
+  position: relative;
+  width: var(--flame-w);
+  height: var(--flame-h);
+  margin-bottom: -1px;
+}
+
+.flameOuter,
+.flameMid,
+.flameCore {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50% 50% 20% 20%;
+  transform-origin: bottom center;
+}
+
+.flameOuter {
+  width: var(--flame-w);
+  height: var(--flame-h);
+  background: radial-gradient(ellipse at 50% 70%, var(--color-flame-mid, #ff8c00), var(--color-flame-outer, #c0392b) 80%, transparent 100%);
+  animation: flicker-a 1.8s ease-in-out infinite;
+  opacity: 0.9;
+}
+
+.flameMid {
+  width: calc(var(--flame-w) * 0.6);
+  height: calc(var(--flame-h) * 0.75);
+  background: radial-gradient(ellipse at 50% 65%, #ffcc44, var(--color-flame-mid, #ff8c00) 75%);
+  animation: flicker-b 1.3s ease-in-out infinite;
+}
+
+.flameCore {
+  width: calc(var(--flame-w) * 0.3);
+  height: calc(var(--flame-h) * 0.45);
+  background: radial-gradient(ellipse at 50% 60%, #fffbe0, var(--color-flame-core, #fff3a0));
+  animation: flicker-a 0.9s ease-in-out infinite reverse;
+}
+
+.glow {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(var(--flame-w) * 3);
+  height: calc(var(--flame-w) * 3);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,180,60,0.22) 0%, transparent 70%);
+  animation: candle-glow 2.2s ease-in-out infinite;
+  pointer-events: none;
+}

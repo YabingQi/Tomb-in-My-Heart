@@ -1,0 +1,110 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(6, 5, 8, 0.97);
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  overflow: hidden;
+}
+
+/* Letter text */
+.letterText {
+  max-width: 480px;
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-text);
+  line-height: 1.8;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  transition: filter 0.4s ease;
+}
+.letterText.burning .line {
+  animation: text-burn 1.2s ease forwards;
+}
+
+.line {
+  margin-bottom: 0.4em;
+}
+
+/* Fire */
+.fireContainer {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 260px;
+  transform-origin: bottom center;
+  z-index: 3;
+}
+
+.fireOuter,
+.fireMid,
+.fireCore {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50% 50% 20% 20%;
+  transform-origin: bottom center;
+  animation: flicker-a 0.9s ease-in-out infinite;
+}
+
+.fireOuter {
+  width: 220px;
+  height: 240px;
+  background: radial-gradient(ellipse at 50% 80%,
+    rgba(192, 57, 43, 0.8) 0%,
+    rgba(192, 57, 43, 0.4) 40%,
+    transparent 80%
+  );
+  animation-duration: 1.1s;
+}
+
+.fireMid {
+  width: 160px;
+  height: 200px;
+  background: radial-gradient(ellipse at 50% 75%,
+    rgba(255, 140, 0, 0.9) 0%,
+    rgba(255, 140, 0, 0.5) 50%,
+    transparent 80%
+  );
+  animation-duration: 0.85s;
+  animation-direction: reverse;
+}
+
+.fireCore {
+  width: 90px;
+  height: 150px;
+  background: radial-gradient(ellipse at 50% 65%,
+    rgba(255, 243, 160, 1) 0%,
+    rgba(255, 200, 60, 0.8) 40%,
+    transparent 80%
+  );
+  animation-duration: 0.7s;
+}
+
+/* Ash text */
+.ashText {
+  position: absolute;
+  text-align: center;
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  color: var(--color-text-muted);
+  z-index: 4;
+  top: 30%;
+}
+
+.ashSub {
+  font-family: var(--font-ui);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--color-text-faint);
+  margin-top: 0.5rem;
+}

@@ -1,0 +1,79 @@
+.card {
+  display: flex;
+  gap: 1.2rem;
+  padding: 1.2rem 1.5rem;
+  background: linear-gradient(135deg, rgba(42,38,48,0.6) 0%, rgba(26,24,32,0.8) 100%);
+  border: 1px solid var(--color-stone-edge);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color var(--transition-med), background var(--transition-med);
+  position: relative;
+  overflow: hidden;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 20% 50%, rgba(200,169,110,0.04) 0%, transparent 60%);
+  transition: opacity var(--transition-med);
+  opacity: 0;
+}
+.card:hover {
+  border-color: var(--color-stone-light);
+  background: linear-gradient(135deg, rgba(42,38,48,0.8) 0%, rgba(30,28,36,0.9) 100%);
+}
+.card:hover::before { opacity: 1; }
+
+.candle {
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 0.2rem;
+  flex-shrink: 0;
+}
+
+.body {
+  flex: 1;
+  min-width: 0;
+}
+
+.name {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  color: var(--color-text);
+  margin-bottom: 0.1rem;
+}
+
+.fandom {
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.04em;
+  margin-bottom: 0.5rem;
+}
+
+.epitaph {
+  font-style: italic;
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+  margin-bottom: 0.6rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.meta {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--color-text-faint);
+  font-family: var(--font-ui);
+  flex-wrap: wrap;
+  margin-bottom: 0.3rem;
+}
+
+.visited {
+  font-size: 0.78rem;
+  color: var(--color-text-faint);
+  font-family: var(--font-ui);
+}

@@ -1,0 +1,14 @@
+.field {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(201, 185, 154, 0.5);
+  animation: float-up linear infinite both;
+}

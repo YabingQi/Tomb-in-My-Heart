@@ -1,2 +1,10 @@
+node_modules/
+dist/
+.DS_Store
+*.local
+
+# IntelliJ (legacy)
 *.class
+*.iml
+.idea/
 workspace.xml

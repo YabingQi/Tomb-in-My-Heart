@@ -1,0 +1,113 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.prompt {
+  font-family: var(--font-ui);
+  font-style: italic;
+  color: var(--color-text-muted);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+}
+
+.flowerBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--color-stone-edge);
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 0.3rem;
+  cursor: pointer;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+  color: inherit;
+}
+.flowerBtn:hover {
+  border-color: var(--color-stone-light);
+  background: rgba(255,255,255,0.06);
+}
+.flowerBtn.selected {
+  border-color: var(--color-gold-dim);
+  background: rgba(200,169,110,0.08);
+}
+
+.flowerEmoji { font-size: 1.5rem; }
+.flowerName {
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+.flowerMeaning {
+  font-size: 0.62rem;
+  color: var(--color-text-faint);
+  text-align: center;
+  font-family: var(--font-ui);
+  font-style: italic;
+}
+
+.noteLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+.opt { color: var(--color-text-faint); font-size: 0.8rem; }
+.noteInput {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--color-stone-light);
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  padding: 0.5rem 0.75rem;
+  width: 100%;
+}
+.noteInput:focus { outline: none; border-color: var(--color-gold-dim); }
+
+.placeBtn {
+  background: none;
+  border: 1px solid var(--color-gold-dim);
+  color: var(--color-gold);
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  padding: 0.65rem 1.2rem;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition-med);
+}
+.placeBtn:hover:not(:disabled) { background: rgba(200,169,110,0.1); }
+.placeBtn:disabled { opacity: 0.35; cursor: default; }
+
+/* Placed state */
+.placed {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1rem 0;
+  text-align: center;
+  font-family: var(--font-heading);
+  color: var(--color-text);
+  animation: fade-in 0.5s ease;
+}
+.placedEmoji { font-size: 2.5rem; }
+.meaning {
+  font-style: italic;
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
