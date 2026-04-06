@@ -1,0 +1,135 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.prompt {
+  font-family: var(--font-ui);
+  font-style: italic;
+  color: var(--color-text-muted);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.wineBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--color-stone-edge);
+  border-radius: var(--radius-sm);
+  padding: 0.65rem 1rem;
+  cursor: pointer;
+  text-align: left;
+  color: inherit;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+  width: 100%;
+}
+.wineBtn:hover {
+  border-color: var(--color-stone-light);
+  background: rgba(255,255,255,0.05);
+}
+.wineBtn.selected {
+  border-color: var(--color-gold-dim);
+  background: rgba(200,169,110,0.08);
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  opacity: 0.8;
+  box-shadow: 0 0 6px currentColor;
+}
+
+.wineInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.wineName {
+  font-family: var(--font-ui);
+  font-size: 0.95rem;
+  color: var(--color-text);
+}
+.wineDesc {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  font-family: var(--font-ui);
+  font-style: italic;
+}
+
+.toastLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+.opt { color: var(--color-text-faint); font-size: 0.8rem; }
+.toastInput {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--color-stone-light);
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  padding: 0.5rem 0.75rem;
+  width: 100%;
+}
+.toastInput:focus { outline: none; border-color: var(--color-gold-dim); }
+
+.pourBtn {
+  background: none;
+  border: 1px solid var(--color-gold-dim);
+  color: var(--color-gold);
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  padding: 0.65rem 1.2rem;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition-med);
+}
+.pourBtn:hover:not(:disabled) { background: rgba(200,169,110,0.1); }
+.pourBtn:disabled { opacity: 0.35; cursor: default; }
+
+/* Poured state */
+.poured {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1rem 0;
+  text-align: center;
+  animation: fade-in 0.5s ease;
+}
+.pouredText {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  color: var(--color-text);
+}
+.pouredSub {
+  font-style: italic;
+  color: var(--color-text-muted);
+  font-family: var(--font-ui);
+}
+.toastText {
+  font-style: italic;
+  color: var(--color-text);
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

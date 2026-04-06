@@ -1,0 +1,108 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  position: relative;
+  z-index: 10;
+}
+
+.navLink {
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: color var(--transition-fast);
+}
+.navLink:hover { color: var(--color-text); }
+
+.deleteBtn {
+  background: none;
+  border: none;
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  color: var(--color-text-faint);
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: color var(--transition-fast);
+  padding: 0;
+}
+.deleteBtn:hover { color: rgba(192,57,43,0.7); }
+
+.confirmRow {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.confirmText {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+.confirmYes {
+  background: none;
+  border: 1px solid rgba(192,57,43,0.5);
+  color: rgba(192,57,43,0.9);
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+.confirmYes:hover { background: rgba(192,57,43,0.15); }
+.confirmNo {
+  background: none;
+  border: none;
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  color: var(--color-text-faint);
+  cursor: pointer;
+  transition: color var(--transition-fast);
+  padding: 0;
+}
+.confirmNo:hover { color: var(--color-text-muted); }
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+  gap: 2rem;
+}
+
+.deathNote {
+  max-width: 480px;
+  text-align: center;
+  font-family: var(--font-body);
+  font-style: italic;
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+/* Not found */
+.notFound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  gap: 1.5rem;
+  font-family: var(--font-heading);
+  color: var(--color-text-muted);
+}
+.back {
+  color: var(--color-text-muted);
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+}

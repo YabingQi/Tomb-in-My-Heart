@@ -1,0 +1,104 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  user-select: none;
+}
+
+.stone {
+  position: relative;
+  width: 220px;
+}
+
+.arch {
+  /* Arched top of the tombstone */
+  width: 220px;
+  height: 110px;
+  background: linear-gradient(170deg, var(--color-stone-light) 0%, var(--color-stone) 50%, var(--color-stone-edge) 100%);
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  box-shadow:
+    inset -6px -4px 12px rgba(0,0,0,0.4),
+    inset 3px 3px 8px rgba(255,255,255,0.04),
+    0 -4px 20px rgba(0,0,0,0.5);
+}
+
+.face {
+  background: linear-gradient(180deg, var(--color-stone) 0%, var(--color-stone-edge) 100%);
+  padding: 0.5rem 1.2rem 1.4rem;
+  text-align: center;
+  position: relative;
+  box-shadow:
+    inset -4px 0 8px rgba(0,0,0,0.35),
+    inset 2px 0 6px rgba(255,255,255,0.03),
+    0 2px 8px rgba(0,0,0,0.4);
+}
+
+.symbol {
+  font-size: 1rem;
+  color: var(--color-text-faint);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.4rem;
+  opacity: 0.6;
+}
+
+.name {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  color: var(--color-text);
+  letter-spacing: 0.06em;
+  line-height: 1.2;
+  margin-bottom: 0.2rem;
+  /* Carved/engraved look */
+  text-shadow: 0 1px 0 rgba(0,0,0,0.8), 0 -1px 0 rgba(255,255,255,0.06);
+}
+
+.fandom {
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+
+.divider {
+  width: 60%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--color-text-faint), transparent);
+  margin: 0.5rem auto 0.7rem;
+}
+
+.epitaph {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin-bottom: 0.6rem;
+}
+
+.placeholder {
+  color: var(--color-text-faint);
+}
+
+.date {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  color: var(--color-text-faint);
+  letter-spacing: 0.06em;
+}
+
+/* Plinth / base */
+.base {
+  width: 240px;
+  height: 12px;
+  background: linear-gradient(180deg, var(--color-stone-light) 0%, var(--color-stone-edge) 100%);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+}
+
+.plinth {
+  width: 260px;
+  height: 10px;
+  background: linear-gradient(180deg, var(--color-stone) 0%, #0f0d12 100%);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.7);
+}

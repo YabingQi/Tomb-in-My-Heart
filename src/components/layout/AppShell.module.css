@@ -1,0 +1,41 @@
+.shell {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  background: radial-gradient(ellipse at 50% 60%, #141118 0%, var(--color-bg-deep) 70%);
+  overflow: hidden;
+}
+
+.vignette {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 50%, transparent 30%, rgba(0,0,0,0.6) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.fog {
+  position: fixed;
+  bottom: 0;
+  left: -10%;
+  width: 120%;
+  height: 35%;
+  background: radial-gradient(ellipse at 50% 100%, rgba(180,170,160,0.06) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+  animation: fog-drift 12s ease-in-out infinite;
+}
+
+.fogB {
+  animation: fog-drift 18s ease-in-out infinite reverse;
+  animation-delay: -6s;
+  opacity: 0.6;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}

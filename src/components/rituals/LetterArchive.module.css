@@ -1,0 +1,117 @@
+.empty {
+  font-family: var(--font-ui);
+  font-style: italic;
+  color: var(--color-text-faint);
+  text-align: center;
+  padding: 1.5rem 0;
+}
+
+.listView {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.letterItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--color-stone-edge);
+  border-radius: var(--radius-sm);
+  padding: 0.9rem 1.1rem;
+  cursor: pointer;
+  text-align: left;
+  color: inherit;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+  width: 100%;
+}
+.letterItem:hover {
+  border-color: var(--color-stone-light);
+  background: rgba(255,255,255,0.05);
+}
+
+.letterNum {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  color: var(--color-text-faint);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.letterDate {
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+}
+.letterPreview {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--color-text);
+  font-style: italic;
+}
+
+.burnedNote {
+  font-family: var(--font-ui);
+  font-style: italic;
+  font-size: 0.8rem;
+  color: var(--color-text-faint);
+  text-align: center;
+  margin-top: 0.5rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--color-stone-edge);
+}
+
+/* Read view */
+.readView {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.back {
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+  transition: color var(--transition-fast);
+}
+.back:hover { color: var(--color-text); }
+
+.readDate {
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  color: var(--color-text-faint);
+}
+
+.readContent {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--color-text);
+  white-space: pre-wrap;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--color-stone-edge);
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.burnFromRead {
+  align-self: flex-start;
+  background: none;
+  border: 1px solid rgba(192,57,43,0.4);
+  color: rgba(192,57,43,0.8);
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition-med);
+}
+.burnFromRead:hover { background: rgba(192,57,43,0.1); }

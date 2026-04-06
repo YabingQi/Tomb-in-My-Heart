@@ -1,0 +1,71 @@
+.scene {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 2rem;
+}
+
+.ground {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 340px;
+  height: 18px;
+  background: linear-gradient(180deg, #1a1618 0%, #0d0b0e 100%);
+  border-radius: 50%;
+  box-shadow: 0 0 40px 10px rgba(0,0,0,0.8);
+}
+
+.stoneWrapper {
+  position: relative;
+  z-index: 2;
+}
+
+.candle {
+  position: absolute;
+  bottom: 90px;
+  z-index: 1;
+}
+.candleLeft  { left: calc(50% - 130px); }
+.candleRight { right: calc(50% - 130px); }
+
+.flowers {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 0.6rem;
+  position: relative;
+  z-index: 3;
+  max-width: 280px;
+}
+
+.flower {
+  font-size: 1.3rem;
+  filter: drop-shadow(0 1px 3px rgba(0,0,0,0.6));
+  animation: flower-appear 0.4s ease both;
+  animation-delay: calc(var(--i) * 0.05s);
+  cursor: default;
+}
+
+@keyframes flower-appear {
+  from { transform: scale(0.3) rotate(-20deg); opacity: 0; }
+  to   { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+.wines {
+  display: flex;
+  gap: 8px;
+  margin-top: 0.4rem;
+  position: relative;
+  z-index: 3;
+}
+
+.wineBottle {
+  font-size: 1.5rem;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.7));
+  cursor: default;
+  transform: rotate(calc(var(--wi) * 5deg - 5deg));
+}
