@@ -4,20 +4,24 @@ import styles from './Modal.module.css'
 
 export default function Modal({ isOpen, onClose, title, children, wide = false }) {
   const ref = useRef(null)
+  // Keep a stable ref to onClose so the focus/keyboard effect only
+  // re-runs when isOpen changes, not on every render.
+  const onCloseRef = useRef(onClose)
+  useEffect(() => { onCloseRef.current = onClose })
 
   useEffect(() => {
     if (!isOpen) return
     const prev = document.activeElement
     ref.current?.focus()
     const handler = (e) => {
-      if (e.key === 'Escape') onClose()
+      if (e.key === 'Escape') onCloseRef.current()
     }
     document.addEventListener('keydown', handler)
     return () => {
       document.removeEventListener('keydown', handler)
       prev?.focus()
     }
-  }, [isOpen, onClose])
+  }, [isOpen])
 
   return (
     <AnimatePresence>

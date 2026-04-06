@@ -1,6 +1,6 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
-import { AnimatePresence } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import { useTombStore } from '../store/tombStore.js'
 import TombScene from '../components/tomb/TombScene.jsx'
 import RitualMenu from '../components/rituals/RitualMenu.jsx'
@@ -18,6 +18,7 @@ export default function TombPage() {
   const deleteTomb = useTombStore(s => s.deleteTomb)
   const navigate = useNavigate()
   const tomb = getTomb(tombId)
+  const [confirmDelete, setConfirmDelete] = useState(false)
 
   useEffect(() => {
     if (tombId && tomb) {
@@ -34,11 +35,9 @@ export default function TombPage() {
     )
   }
 
-  const handleDelete = () => {
-    if (window.confirm(`Remove the tomb of ${tomb.character.name}? This cannot be undone.`)) {
-      deleteTomb(tombId)
-      navigate('/')
-    }
+  const handleDeleteConfirmed = () => {
+    deleteTomb(tombId)
+    navigate('/')
   }
 
   return (
@@ -46,9 +45,17 @@ export default function TombPage() {
       {/* Top navigation */}
       <nav className={styles.nav}>
         <Link to="/" className={styles.navLink}>← All Tombs</Link>
-        <button className={styles.deleteBtn} onClick={handleDelete} aria-label="Remove this tomb">
-          Remove tomb
-        </button>
+        {confirmDelete ? (
+          <div className={styles.confirmRow}>
+            <span className={styles.confirmText}>Remove this tomb?</span>
+            <button className={styles.confirmYes} onClick={handleDeleteConfirmed}>Yes, remove</button>
+            <button className={styles.confirmNo} onClick={() => setConfirmDelete(false)}>Cancel</button>
+          </div>
+        ) : (
+          <button className={styles.deleteBtn} onClick={() => setConfirmDelete(true)} aria-label="Remove this tomb">
+            Remove tomb
+          </button>
+        )}
       </nav>
 
       {/* The scene — takes up most of the screen */}

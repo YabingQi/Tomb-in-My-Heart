@@ -36,6 +36,40 @@
 }
 .deleteBtn:hover { color: rgba(192,57,43,0.7); }
 
+.confirmRow {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.confirmText {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+.confirmYes {
+  background: none;
+  border: 1px solid rgba(192,57,43,0.5);
+  color: rgba(192,57,43,0.9);
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+.confirmYes:hover { background: rgba(192,57,43,0.15); }
+.confirmNo {
+  background: none;
+  border: none;
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  color: var(--color-text-faint);
+  cursor: pointer;
+  transition: color var(--transition-fast);
+  padding: 0;
+}
+.confirmNo:hover { color: var(--color-text-muted); }
+
 .main {
   flex: 1;
   display: flex;
