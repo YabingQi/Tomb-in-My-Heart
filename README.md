@@ -25,7 +25,7 @@ All data stays on your device. Nothing is sent anywhere.
 
 ## Try it
 
-**[Open Tomb in My Heart →](https://yabingqi.github.io/tomb-in-my-heart/)**
+**[Open Tomb in My Heart →]([https://yabingqi.github.io/tomb-in-my-heart/](https://yabingqi.github.io/Tomb-in-My-Heart/))**
 
 Or run it locally (see below).
 
