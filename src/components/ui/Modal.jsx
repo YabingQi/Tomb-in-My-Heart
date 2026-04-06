@@ -4,23 +4,19 @@ import styles from './Modal.module.css'
 
 export default function Modal({ isOpen, onClose, title, children, wide = false }) {
   const ref = useRef(null)
-  // Keep a stable ref to onClose so the focus/keyboard effect only
-  // re-runs when isOpen changes, not on every render.
   const onCloseRef = useRef(onClose)
   useEffect(() => { onCloseRef.current = onClose })
 
+  // Only wire up the Escape key — do NOT auto-focus the panel div.
+  // Focusing the panel would steal focus from any input inside the modal
+  // on every re-render triggered by the input's own onChange.
   useEffect(() => {
     if (!isOpen) return
-    const prev = document.activeElement
-    ref.current?.focus()
     const handler = (e) => {
       if (e.key === 'Escape') onCloseRef.current()
     }
     document.addEventListener('keydown', handler)
-    return () => {
-      document.removeEventListener('keydown', handler)
-      prev?.focus()
-    }
+    return () => document.removeEventListener('keydown', handler)
   }, [isOpen])
 
   return (
@@ -39,7 +35,6 @@ export default function Modal({ isOpen, onClose, title, children, wide = false }
         >
           <motion.div
             ref={ref}
-            tabIndex={-1}
             className={`${styles.panel} ${wide ? styles.wide : ''}`}
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}

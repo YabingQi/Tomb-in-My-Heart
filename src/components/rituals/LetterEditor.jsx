@@ -69,6 +69,7 @@ export default function LetterEditor({ tombId }) {
               placeholder="Dear..."
               rows={10}
               aria-label="Letter content"
+              autoFocus
             />
             <div className={styles.actions}>
               <button
