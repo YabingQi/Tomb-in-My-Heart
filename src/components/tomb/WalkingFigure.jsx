@@ -1,8 +1,8 @@
 import { useRef, useEffect } from 'react'
 import styles from './WalkingFigure.module.css'
 
-const BOUNDS = 110   // px from center, each direction
-const SPEED  = 3     // px per frame (~180px/s at 60fps)
+const BOUNDS = 110
+const SPEED  = 3
 
 export default function WalkingFigure() {
   const wrapperRef = useRef(null)
@@ -23,16 +23,18 @@ export default function WalkingFigure() {
     const tick = () => {
       const el = wrapperRef.current
       if (el) {
-        const left  = keys.has('ArrowLeft')
-        const right = keys.has('ArrowRight')
+        const goLeft  = keys.has('ArrowLeft')
+        const goRight = keys.has('ArrowRight')
 
-        if (left || right) {
-          const dir = right ? 1 : -1
-          stateRef.current.x   = Math.max(-BOUNDS, Math.min(BOUNDS, stateRef.current.x + dir * SPEED))
+        if (goLeft || goRight) {
+          const dir = goRight ? 1 : -1
+          stateRef.current.x = Math.max(-BOUNDS, Math.min(BOUNDS, stateRef.current.x + dir * SPEED))
           stateRef.current.dir = dir
           el.style.transform = `translateX(${stateRef.current.x}px) scaleX(${dir})`
-          el.classList.add(styles.walking)
-        } else {
+          if (!el.classList.contains(styles.walking)) {
+            el.classList.add(styles.walking)
+          }
+        } else if (el.classList.contains(styles.walking)) {
           el.classList.remove(styles.walking)
         }
       }
@@ -69,7 +71,7 @@ export default function WalkingFigure() {
         <line x1="14" y1="31" x2="5"  y2="46" className={styles.legL} />
         <line x1="14" y1="31" x2="23" y2="46" className={styles.legR} />
       </svg>
-      <p className={styles.hint}>← →</p>
+      <p className={styles.hint}>&#8592; &#8594;</p>
     </div>
   )
 }

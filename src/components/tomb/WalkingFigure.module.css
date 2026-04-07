@@ -1,11 +1,10 @@
-/* ── Wrapper ── */
 .wrapper {
   position: absolute;
   bottom: 14px;
   left: 50%;
-  margin-left: -14px;          /* center the 28px SVG */
+  margin-left: -14px;
   z-index: 4;
-  color: var(--color-gold-dim); /* #8a7248 — warm, visible on dark bg */
+  color: var(--color-gold-dim);
   pointer-events: none;
   display: flex;
   flex-direction: column;
@@ -14,9 +13,10 @@
   transform: translateX(0px) scaleX(1);
 }
 
-.svg  { display: block; }
+.svg {
+  display: block;
+}
 
-/* ── Hint label ── */
 .hint {
   font-family: var(--font-ui);
   font-size: 0.5rem;
@@ -26,48 +26,56 @@
   user-select: none;
 }
 
-/* ── Walking state: class toggled via JS classList ──
-   Using .walking .child avoids CSS-Modules @keyframes hash mismatch
-   that occurs with [data-attr] compound selectors.             ── */
+/* Explicit rule so styles.walking is exported by CSS Modules */
+.walking {
+  /* intentionally empty */
+}
 
 .walking .svg {
-  animation: bob 0.42s ease-in-out infinite;
-}
-.walking .legL {
-  transform-origin: 14px 31px;
-  animation: swing-leg-l 0.42s linear infinite;
-}
-.walking .legR {
-  transform-origin: 14px 31px;
-  animation: swing-leg-r 0.42s linear infinite;
-}
-.walking .armL {
-  transform-origin: 14px 19px;
-  animation: swing-arm-l 0.42s linear infinite;
-}
-.walking .armR {
-  transform-origin: 14px 19px;
-  animation: swing-arm-r 0.42s linear infinite;
+  animation: figBob 0.42s ease-in-out infinite;
 }
 
-/* ── Keyframes ── */
-@keyframes bob {
-  0%, 100% { transform: translateY(0);    }
+.walking .legL {
+  transform-origin: 14px 31px;
+  animation: figLegL 0.42s linear infinite;
+}
+
+.walking .legR {
+  transform-origin: 14px 31px;
+  animation: figLegR 0.42s linear infinite;
+}
+
+.walking .armL {
+  transform-origin: 14px 19px;
+  animation: figArmL 0.42s linear infinite;
+}
+
+.walking .armR {
+  transform-origin: 14px 19px;
+  animation: figArmR 0.42s linear infinite;
+}
+
+@keyframes figBob {
+  0%, 100% { transform: translateY(0); }
   50%       { transform: translateY(-2px); }
 }
-@keyframes swing-leg-l {
+
+@keyframes figLegL {
   0%, 100% { transform: rotate(-25deg); }
-  50%      { transform: rotate( 25deg); }
+  50%      { transform: rotate(25deg); }
 }
-@keyframes swing-leg-r {
-  0%, 100% { transform: rotate( 25deg); }
+
+@keyframes figLegR {
+  0%, 100% { transform: rotate(25deg); }
   50%      { transform: rotate(-25deg); }
 }
-@keyframes swing-arm-l {
-  0%, 100% { transform: rotate( 22deg); }
+
+@keyframes figArmL {
+  0%, 100% { transform: rotate(22deg); }
   50%      { transform: rotate(-22deg); }
 }
-@keyframes swing-arm-r {
+
+@keyframes figArmR {
   0%, 100% { transform: rotate(-22deg); }
-  50%      { transform: rotate( 22deg); }
+  50%      { transform: rotate(22deg); }
 }
