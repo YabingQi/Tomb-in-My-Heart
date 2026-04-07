@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
-import { AnimatePresence, motion } from 'framer-motion'
 import { useTombStore } from '../store/tombStore.js'
 import TombScene from '../components/tomb/TombScene.jsx'
 import RitualMenu from '../components/rituals/RitualMenu.jsx'
@@ -24,7 +23,7 @@ export default function TombPage() {
     if (tombId && tomb) {
       markVisited(tombId)
     }
-  }, [tombId]) // only on mount
+  }, [tombId, tomb, markVisited])
 
   if (!tomb) {
     return (
@@ -77,9 +76,7 @@ export default function TombPage() {
       <LetterArchive tombId={tombId} />
 
       {/* Sit with them — full screen overlay */}
-      <AnimatePresence>
-        <SitWithThem characterName={tomb.character.name} />
-      </AnimatePresence>
+      <SitWithThem characterName={tomb.character.name} />
     </div>
   )
 }

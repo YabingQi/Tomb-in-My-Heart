@@ -1,0 +1,73 @@
+/* ── Wrapper ── */
+.wrapper {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  margin-left: -14px;          /* center the 28px SVG */
+  z-index: 4;
+  color: var(--color-gold-dim); /* #8a7248 — warm, visible on dark bg */
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  transform: translateX(0px) scaleX(1);
+}
+
+.svg  { display: block; }
+
+/* ── Hint label ── */
+.hint {
+  font-family: var(--font-ui);
+  font-size: 0.5rem;
+  letter-spacing: 0.15em;
+  color: var(--color-text-faint);
+  opacity: 0.7;
+  user-select: none;
+}
+
+/* ── Walking state: class toggled via JS classList ──
+   Using .walking .child avoids CSS-Modules @keyframes hash mismatch
+   that occurs with [data-attr] compound selectors.             ── */
+
+.walking .svg {
+  animation: bob 0.42s ease-in-out infinite;
+}
+.walking .legL {
+  transform-origin: 14px 31px;
+  animation: swing-leg-l 0.42s linear infinite;
+}
+.walking .legR {
+  transform-origin: 14px 31px;
+  animation: swing-leg-r 0.42s linear infinite;
+}
+.walking .armL {
+  transform-origin: 14px 19px;
+  animation: swing-arm-l 0.42s linear infinite;
+}
+.walking .armR {
+  transform-origin: 14px 19px;
+  animation: swing-arm-r 0.42s linear infinite;
+}
+
+/* ── Keyframes ── */
+@keyframes bob {
+  0%, 100% { transform: translateY(0);    }
+  50%       { transform: translateY(-2px); }
+}
+@keyframes swing-leg-l {
+  0%, 100% { transform: rotate(-25deg); }
+  50%      { transform: rotate( 25deg); }
+}
+@keyframes swing-leg-r {
+  0%, 100% { transform: rotate( 25deg); }
+  50%      { transform: rotate(-25deg); }
+}
+@keyframes swing-arm-l {
+  0%, 100% { transform: rotate( 22deg); }
+  50%      { transform: rotate(-22deg); }
+}
+@keyframes swing-arm-r {
+  0%, 100% { transform: rotate(-22deg); }
+  50%      { transform: rotate( 22deg); }
+}

@@ -1,6 +1,7 @@
 import { useMemo } from 'react'
 import TombStone from './TombStone.jsx'
 import CandleFlicker from '../ui/CandleFlicker.jsx'
+import WalkingFigure from './WalkingFigure.jsx'
 import { FLOWERS } from '../../data/flowers.js'
 import { WINES } from '../../data/wines.js'
 import styles from './TombScene.module.css'
@@ -24,6 +25,9 @@ export default function TombScene({ tomb }) {
     <div className={styles.scene}>
       {/* Ground */}
       <div className={styles.ground} />
+
+      {/* The visitor — paces back and forth */}
+      <WalkingFigure />
 
       {/* Candles flanking the stone */}
       <div className={`${styles.candle} ${styles.candleLeft}`}>
