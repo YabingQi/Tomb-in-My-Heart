@@ -31,9 +31,9 @@ export default function WalkingFigure() {
           stateRef.current.x   = Math.max(-BOUNDS, Math.min(BOUNDS, stateRef.current.x + dir * SPEED))
           stateRef.current.dir = dir
           el.style.transform = `translateX(${stateRef.current.x}px) scaleX(${dir})`
-          el.dataset.walking = 'true'
+          el.classList.add(styles.walking)
         } else {
-          el.dataset.walking = 'false'
+          el.classList.remove(styles.walking)
         }
       }
       raf = requestAnimationFrame(tick)
@@ -51,35 +51,24 @@ export default function WalkingFigure() {
   }, [])
 
   return (
-    <div
-      ref={wrapperRef}
-      className={styles.wrapper}
-      data-walking="false"
-      aria-hidden="true"
-    >
-      <div className={styles.body}>
-        <svg
-          className={styles.svg}
-          width="18"
-          height="32"
-          viewBox="0 0 18 32"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.8"
-          strokeLinecap="round"
-        >
-          {/* Head */}
-          <circle cx="9" cy="5" r="3.5" />
-          {/* Body */}
-          <line x1="9" y1="8.5" x2="9" y2="20" />
-          {/* Arms */}
-          <line x1="9" y1="12" x2="3" y2="17" className={styles.armL} />
-          <line x1="9" y1="12" x2="15" y2="17" className={styles.armR} />
-          {/* Legs */}
-          <line x1="9" y1="20" x2="3"  y2="30" className={styles.legL} />
-          <line x1="9" y1="20" x2="15" y2="30" className={styles.legR} />
-        </svg>
-      </div>
+    <div ref={wrapperRef} className={styles.wrapper} aria-hidden="true">
+      <svg
+        className={styles.svg}
+        width="28"
+        height="50"
+        viewBox="0 0 28 50"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+      >
+        <circle cx="14" cy="8" r="5.5" />
+        <line x1="14" y1="13.5" x2="14" y2="31" />
+        <line x1="14" y1="19" x2="5"  y2="26" className={styles.armL} />
+        <line x1="14" y1="19" x2="23" y2="26" className={styles.armR} />
+        <line x1="14" y1="31" x2="5"  y2="46" className={styles.legL} />
+        <line x1="14" y1="31" x2="23" y2="46" className={styles.legR} />
+      </svg>
       <p className={styles.hint}>← →</p>
     </div>
   )

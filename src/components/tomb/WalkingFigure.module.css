@@ -1,21 +1,20 @@
-/* ── Wrapper: centered on ground, keyboard-driven translateX via JS ── */
+/* ── Wrapper ── */
 .wrapper {
   position: absolute;
   bottom: 14px;
   left: 50%;
-  margin-left: -9px;          /* center the 18px SVG on the 50% anchor */
+  margin-left: -14px;          /* center the 28px SVG */
   z-index: 4;
-  color: var(--color-text-muted);  /* #7a6e60 — clearly visible on dark bg */
+  color: var(--color-gold-dim); /* #8a7248 — warm, visible on dark bg */
   pointer-events: none;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2px;
+  gap: 3px;
   transform: translateX(0px) scaleX(1);
 }
 
-.body  { display: contents; }
-.svg   { display: block; }
+.svg  { display: block; }
 
 /* ── Hint label ── */
 .hint {
@@ -23,34 +22,39 @@
   font-size: 0.5rem;
   letter-spacing: 0.15em;
   color: var(--color-text-faint);
-  opacity: 0.6;
+  opacity: 0.7;
   user-select: none;
 }
 
-/* ── Limbs: animate only while walking ── */
-.legL, .legR, .armL, .armR { transform-origin: inherit; }
+/* ── Walking state: class toggled via JS classList ──
+   Using .walking .child avoids CSS-Modules @keyframes hash mismatch
+   that occurs with [data-attr] compound selectors.             ── */
 
-[data-walking="true"] .legL {
-  transform-origin: 9px 20px;
+.walking .svg {
+  animation: bob 0.42s ease-in-out infinite;
+}
+.walking .legL {
+  transform-origin: 14px 31px;
   animation: swing-leg-l 0.42s linear infinite;
 }
-[data-walking="true"] .legR {
-  transform-origin: 9px 20px;
+.walking .legR {
+  transform-origin: 14px 31px;
   animation: swing-leg-r 0.42s linear infinite;
 }
-[data-walking="true"] .armL {
-  transform-origin: 9px 12px;
+.walking .armL {
+  transform-origin: 14px 19px;
   animation: swing-arm-l 0.42s linear infinite;
 }
-[data-walking="true"] .armR {
-  transform-origin: 9px 12px;
+.walking .armR {
+  transform-origin: 14px 19px;
   animation: swing-arm-r 0.42s linear infinite;
-}
-[data-walking="true"] .body {
-  animation: bob 0.42s ease-in-out infinite;
 }
 
 /* ── Keyframes ── */
+@keyframes bob {
+  0%, 100% { transform: translateY(0);    }
+  50%       { transform: translateY(-2px); }
+}
 @keyframes swing-leg-l {
   0%, 100% { transform: rotate(-25deg); }
   50%      { transform: rotate( 25deg); }
@@ -66,8 +70,4 @@
 @keyframes swing-arm-r {
   0%, 100% { transform: rotate(-22deg); }
   50%      { transform: rotate( 22deg); }
-}
-@keyframes bob {
-  0%, 100% { transform: translateY(0);    }
-  50%       { transform: translateY(-2px); }
 }
