@@ -1,0 +1,76 @@
+/* ── Outer wrapper: handles horizontal pacing + direction flip ── */
+.wrapper {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  z-index: 4;
+  color: rgba(190, 165, 140, 0.45);
+  pointer-events: none;
+  animation: walk-path 10s linear infinite;
+}
+
+/* ── Inner: vertical bob while walking ── */
+.bob {
+  animation: bob 0.55s ease-in-out infinite;
+}
+
+.svg {
+  display: block;
+}
+
+/* ── Limb swing ── */
+
+.legL {
+  transform-origin: 9px 20px;
+  animation: swing-leg-l 0.55s linear infinite;
+}
+.legR {
+  transform-origin: 9px 20px;
+  animation: swing-leg-r 0.55s linear infinite;
+}
+.armL {
+  transform-origin: 9px 12px;
+  animation: swing-arm-l 0.55s linear infinite;
+}
+.armR {
+  transform-origin: 9px 12px;
+  animation: swing-arm-r 0.55s linear infinite;
+}
+
+/* ── Keyframes ── */
+
+/*
+  Walk left→right (0–44%), brief pause & turn (44–50%),
+  walk right→left (50–94%), brief pause & turn (94–100%).
+  translateX runs in the element's own coordinate space,
+  so the translation is always away from center regardless of flip.
+*/
+@keyframes walk-path {
+  0%   { transform: translateX(-110px) scaleX(1);  }
+  44%  { transform: translateX( 110px) scaleX(1);  }
+  50%  { transform: translateX( 110px) scaleX(-1); }
+  94%  { transform: translateX(-110px) scaleX(-1); }
+  100% { transform: translateX(-110px) scaleX(1);  }
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0);    }
+  50%       { transform: translateY(-2px); }
+}
+
+@keyframes swing-leg-l {
+  0%, 100% { transform: rotate(-25deg); }
+  50%      { transform: rotate( 25deg); }
+}
+@keyframes swing-leg-r {
+  0%, 100% { transform: rotate( 25deg); }
+  50%      { transform: rotate(-25deg); }
+}
+@keyframes swing-arm-l {
+  0%, 100% { transform: rotate( 22deg); }
+  50%      { transform: rotate(-22deg); }
+}
+@keyframes swing-arm-r {
+  0%, 100% { transform: rotate(-22deg); }
+  50%      { transform: rotate( 22deg); }
+}
