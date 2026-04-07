@@ -71,7 +71,7 @@ export default function WalkingFigure() {
         <line x1="14" y1="31" x2="5"  y2="46" className={styles.legL} />
         <line x1="14" y1="31" x2="23" y2="46" className={styles.legR} />
       </svg>
-      <p className={styles.hint}>&#8592; &#8594;</p>
+      <p className={styles.hint}>{'← →'}</p>
     </div>
   )
 }
