@@ -5,12 +5,15 @@ import Modal from '../ui/Modal.jsx'
 import styles from './CreateTombModal.module.css'
 
 const UNIVERSES = [
-  { value: 'video-game', label: 'Video Game' },
-  { value: 'anime',      label: 'Anime' },
-  { value: 'novel',      label: 'Novel' },
-  { value: 'manga',      label: 'Manga' },
-  { value: 'film',       label: 'Film / Series' },
-  { value: 'other',      label: 'Other' },
+  { value: 'video-game',     label: 'Video Game' },
+  { value: 'visual-novel',   label: 'Visual Novel' },
+  { value: 'anime',          label: 'Anime' },
+  { value: 'manga',          label: 'Manga' },
+  { value: 'manhua-webtoon', label: 'Manhua / Webtoon' },
+  { value: 'novel',          label: 'Novel' },
+  { value: 'film-series',    label: 'Film / Series' },
+  { value: 'vtuber',         label: 'VTuber / Virtual Artist' },
+  { value: 'other',          label: 'Other' },
 ]
 
 export default function CreateTombModal({ isOpen, onClose }) {
@@ -92,12 +95,12 @@ export default function CreateTombModal({ isOpen, onClose }) {
         </label>
 
         <label className={styles.label}>
-          <span>A remembrance <span className={styles.optional}>(optional)</span></span>
+          <span>In their memory <span className={styles.optional}>(optional)</span></span>
           <textarea
             className={`${styles.input} ${styles.textarea}`}
             value={form.deathNote}
             onChange={set('deathNote')}
-            placeholder="Write something about them, or about how you felt when they left..."
+            placeholder="Write something about them — who they were, how they left, what they meant to you..."
             rows={3}
           />
         </label>
