@@ -1,63 +1,56 @@
-/* ── Outer wrapper: handles horizontal pacing + direction flip ── */
+/* ── Wrapper: centered on ground, keyboard-driven translateX via JS ── */
 .wrapper {
   position: absolute;
   bottom: 14px;
   left: 50%;
+  margin-left: -9px;          /* center the 18px SVG on the 50% anchor */
   z-index: 4;
-  color: rgba(190, 165, 140, 0.45);
+  color: var(--color-text-muted);  /* #7a6e60 — clearly visible on dark bg */
   pointer-events: none;
-  animation: walk-path 10s linear infinite;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  transform: translateX(0px) scaleX(1);
 }
 
-/* ── Inner: vertical bob while walking ── */
-.bob {
-  animation: bob 0.55s ease-in-out infinite;
+.body  { display: contents; }
+.svg   { display: block; }
+
+/* ── Hint label ── */
+.hint {
+  font-family: var(--font-ui);
+  font-size: 0.5rem;
+  letter-spacing: 0.15em;
+  color: var(--color-text-faint);
+  opacity: 0.6;
+  user-select: none;
 }
 
-.svg {
-  display: block;
-}
+/* ── Limbs: animate only while walking ── */
+.legL, .legR, .armL, .armR { transform-origin: inherit; }
 
-/* ── Limb swing ── */
-
-.legL {
+[data-walking="true"] .legL {
   transform-origin: 9px 20px;
-  animation: swing-leg-l 0.55s linear infinite;
+  animation: swing-leg-l 0.42s linear infinite;
 }
-.legR {
+[data-walking="true"] .legR {
   transform-origin: 9px 20px;
-  animation: swing-leg-r 0.55s linear infinite;
+  animation: swing-leg-r 0.42s linear infinite;
 }
-.armL {
+[data-walking="true"] .armL {
   transform-origin: 9px 12px;
-  animation: swing-arm-l 0.55s linear infinite;
+  animation: swing-arm-l 0.42s linear infinite;
 }
-.armR {
+[data-walking="true"] .armR {
   transform-origin: 9px 12px;
-  animation: swing-arm-r 0.55s linear infinite;
+  animation: swing-arm-r 0.42s linear infinite;
+}
+[data-walking="true"] .body {
+  animation: bob 0.42s ease-in-out infinite;
 }
 
 /* ── Keyframes ── */
-
-/*
-  Walk left→right (0–44%), brief pause & turn (44–50%),
-  walk right→left (50–94%), brief pause & turn (94–100%).
-  translateX runs in the element's own coordinate space,
-  so the translation is always away from center regardless of flip.
-*/
-@keyframes walk-path {
-  0%   { transform: translateX(-110px) scaleX(1);  }
-  44%  { transform: translateX( 110px) scaleX(1);  }
-  50%  { transform: translateX( 110px) scaleX(-1); }
-  94%  { transform: translateX(-110px) scaleX(-1); }
-  100% { transform: translateX(-110px) scaleX(1);  }
-}
-
-@keyframes bob {
-  0%, 100% { transform: translateY(0);    }
-  50%       { transform: translateY(-2px); }
-}
-
 @keyframes swing-leg-l {
   0%, 100% { transform: rotate(-25deg); }
   50%      { transform: rotate( 25deg); }
@@ -73,4 +66,8 @@
 @keyframes swing-arm-r {
   0%, 100% { transform: rotate(-22deg); }
   50%      { transform: rotate( 22deg); }
+}
+@keyframes bob {
+  0%, 100% { transform: translateY(0);    }
+  50%       { transform: translateY(-2px); }
 }
